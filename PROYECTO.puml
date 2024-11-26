@@ -1,0 +1,47 @@
+@startuml PROYECTO
+
+hide empty members
+skinparam Shadowing false
+skinparam classAttributeIconSize 0
+skinparam ClassBorderThickness 0.5
+skinparam groupInheritance 5
+skinparam class {
+	BackgroundColor AntiqueWhite
+	ArrowColor Black
+	BorderColor Black
+}
+skinparam defaultTextAlignment center
+skinparam linetype ortho
+skinparam Dpi 300
+' skinparam backgroundColor transparent
+
+class Alarm
+{
+	+Risk : <HighTemp> | <LowTemp> <<type>>
+	+String : seq of char <<type>>
+	+type : Risk
+	+message : String
+	+Alarm(Risk, String) : Alarm
+	+setMessage(String)
+}
+
+class Sensor
+{
+	+TempRange : real <<type>>
+	+temperatures : TempRange
+	+Sensor(real) : Sensor
+	+getTemperature() : real
+}
+
+class System
+{
+	+String : seq of char <<type>>
+	+temperatures : real
+	+System(set of Sensor) : System
+	+checkTemperature()
+}
+
+System --> "*" Sensor : +sensors
+System --> "*" Alarm : +alarms
+
+@enduml
