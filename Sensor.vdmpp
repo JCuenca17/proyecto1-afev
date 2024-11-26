@@ -1,0 +1,16 @@
+class Sensor
+    types
+        public TempRange = real;
+    instance variables
+        public temperatures: TempRange;
+    inv temperatures >= -50 and temperatures <= 50;
+    operations
+        public Sensor: real ==> Sensor
+        Sensor(temp) == (
+            temperatures := temp;
+        );
+        public getTemperature: () ==> real
+        getTemperature() == (
+            return temperatures;
+        );
+end Sensor

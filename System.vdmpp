@@ -1,0 +1,28 @@
+class System
+    types
+        public String = seq of char;
+    instance variables
+        public sensors: set of Sensor;
+        public alarms: seq of Alarm := 
+        [new Alarm(<HighTemp>, "none"), new Alarm(<LowTemp>, "none")];
+        public temperatures: real := 0; 
+    operations
+        public System: set of Sensor ==> System
+        System(sens) == (
+            sensors := sens;
+        );
+        public checkTemperature: () ==> ()
+        checkTemperature() == (
+            for all s in set sensors do
+                temperatures := s.getTemperature();
+                if temperatures >= -18
+                then alarms(1).setMessage("High temperature detected")
+                else if temperatures <= -23
+                then alarms(2).setMessage("Low temperature detected")
+                else
+                (
+                    alarms(1).setMessage("none");
+                    alarms(2).setMessage("none");
+                )
+        )
+end System

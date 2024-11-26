@@ -1,0 +1,19 @@
+class Alarm
+    types
+        public Risk = <HighTemp> | <LowTemp>;
+        public String = seq of char;
+    instance variables
+        public type: Risk;
+        public message: String:= "none";
+    inv message <> [];
+    operations
+        public Alarm: Risk * String ==> Alarm
+        Alarm(risk, msg) == (
+            type := risk;
+            message := msg;
+        );
+        public setMessage: String ==> ()
+        setMessage(msg) == (
+            message := msg;
+        );
+end Alarm
