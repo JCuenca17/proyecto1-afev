@@ -1,0 +1,37 @@
+class Test
+instance variables
+    alarms: Alarm;
+    sensors1: Sensor;
+    sensors2: Sensor;
+    sensors3: Sensor;
+    system: System;
+operations
+    public run: () ==> System`String
+    run() == test();
+
+    public test: () ==> System`String
+    test() == (
+        sensorTest();
+        
+        -- Caso 1: Sensor con alta temperatura
+        system := new System({sensors1});
+        system.checkTemperature();
+        
+        -- Caso 2: Sensor con baja temperatura
+        system := new System({sensors2});
+        system.checkTemperature();
+        
+        -- Caso 3: Sensor con temperatura normal
+        system := new System({sensors3});
+        system.checkTemperature();
+
+        return "All tests passed";
+    );
+
+    public sensorTest: () ==> ()
+    sensorTest() == (
+        sensors1 := new Sensor(-10); -- Alta temperatura
+        sensors2 := new Sensor(-25); -- Baja temperatura
+        sensors3 := new Sensor(-20); -- Temperatura normal
+    );
+end Test
