@@ -24,3 +24,5 @@ El PDF completo está en el repositorio. Ahí se explican los cinco requisitos f
 ## Ejecutarlo
 
 Se abren los archivos `.vdmpp` en VDM Toolbox (o en Overture), se cargan las cuatro clases y se ejecutan las operaciones de `Test`.
+
+© 2024 José Luis Cuenca Gutiérrez. Todos los derechos reservados. El artículo es de autoría grupal.
